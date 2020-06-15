@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class SecondActivity extends AppCompatActivity {
     private TextView sName,sNumber;
@@ -23,7 +24,7 @@ public class SecondActivity extends AppCompatActivity {
         mContact=(Contact) getIntent().getSerializableExtra("serial");
         sName.setText(mContact.getName());
         sNumber.setText(mContact.getNumber());
-        Glide.with(getApplicationContext()).load(mContact.getImage()).into(sImage);
+        Glide.with(getApplicationContext()).load(mContact.getImage()).apply(RequestOptions.circleCropTransform()).into(sImage);
     }
 
     @Override
